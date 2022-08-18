@@ -1,6 +1,6 @@
 # temp_and_humidity_server
 
-Review the method:\\
+Review the method: <br />
 - [ ] Study the logic behind arduino language\\
 - [ ] Study the way to design the web server/HTML\\
       Video: https://www.circuitbasics.com/how-to-set-up-a-web-server-using-arduino-and-esp8266-01/ \\
