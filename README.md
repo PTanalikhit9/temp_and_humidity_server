@@ -1,8 +1,11 @@
 # temp_and_humidity_server
 
 Review the method: <br />
-- [ ] Study the logic behind arduino language
-- [ ] Study this manual: http://cactus.io/tutorials/arduino/basic-web-server 
+- [ ] Study the logic behind arduino language <br />
+Suggested by Deok ---------------------------------------------------------------------------
+- [ ] Study this manual: https://create.arduino.cc/projecthub/moty/enc28j60-on-the-web-39ae05
+- [ ] Study this manual: http://cactus.io/tutorials/arduino/basic-web-server <br />
+----------------------------------------------------------------------------------------------
 - [ ] Study the way to design the web server/HTML<br />
       Video: https://www.circuitbasics.com/how-to-set-up-a-web-server-using-arduino-and-esp8266-01/ 
 - [ ] Basic display of webserver: just show the value of temperature and humidity 
