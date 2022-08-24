@@ -2,7 +2,8 @@
 
 Review the method: <br />
 - [ ] Study the logic behind arduino language <br />
-Suggested by Deok ---------------------------------------------------------------------------
+---------------------------------------------------------------------------------------------- <br />
+Suggested by Deok 
 - [ ] Study this manual: https://create.arduino.cc/projecthub/moty/enc28j60-on-the-web-39ae05
 - [ ] Study this manual: http://cactus.io/tutorials/arduino/basic-web-server <br />
 ----------------------------------------------------------------------------------------------
