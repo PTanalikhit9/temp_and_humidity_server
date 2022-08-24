@@ -6,6 +6,7 @@ Review the method: <br />
 Suggested by Deok 
 - [ ] Study this manual: https://create.arduino.cc/projecthub/moty/enc28j60-on-the-web-39ae05
 - [ ] Study this manual: http://cactus.io/tutorials/arduino/basic-web-server <br />
+- [ ] Search: enc28j60 html server
 ----------------------------------------------------------------------------------------------
 - [ ] Study the way to design the web server/HTML<br />
       Video: https://www.circuitbasics.com/how-to-set-up-a-web-server-using-arduino-and-esp8266-01/ 
