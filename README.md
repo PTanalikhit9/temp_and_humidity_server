@@ -7,11 +7,9 @@ Suggested by Deok
 - [ ] Study this manual: https://create.arduino.cc/projecthub/moty/enc28j60-on-the-web-39ae05
 - [ ] Study this manual: http://cactus.io/tutorials/arduino/basic-web-server <br />
 - [ ] Search: enc28j60 html server <br />
-<br />
 Also:
 - [ ] https://www.instructables.com/Arduino-TempHumidity-with-LCD-and-Web-Interface/
 - [ ] https://create.arduino.cc/projecthub/moty/enc28j60-on-the-web-39ae05
-<br />
 TO DO (30th August 2022)
 - [ ] Study how to get IP address
 - [ ] How to send data to the server simply
