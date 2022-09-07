@@ -11,7 +11,7 @@ Also:
 - [ ] https://www.instructables.com/Arduino-TempHumidity-with-LCD-and-Web-Interface/
 - [ ] https://create.arduino.cc/projecthub/moty/enc28j60-on-the-web-39ae05
 TO DO (30th August 2022)
-- [ ] Study how to get IP address
+- [/] Study how to get IP address
 - [ ] How to send data to the server simply
 ----------------------------------------------------------------------------------------------
 - [ ] Study the way to design the web server/HTML<br />
