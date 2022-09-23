@@ -6,7 +6,7 @@
 #include <EtherCard.h>
 
 #include "DHT.h"
-#define DHTPIN 2  
+#define DHTPIN 4  
 #define DHTTYPE DHT11 // actually it should be DHT 22, but the program may have a problem
 DHT dht(DHTPIN, DHTTYPE);
 
