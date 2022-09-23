@@ -6,9 +6,10 @@
 #include <EtherCard.h>
 
 #include "DHT.h"
-#define DHTPIN 4  
-#define DHTTYPE DHT11 // actually it should be DHT 22, but the program may have a problem
-DHT dht(DHTPIN, DHTTYPE);
+DHT dht;
+// #define DHTPIN 4  
+// #define DHTTYPE DHT11 // actually it should be DHT 22, but the program may have a problem
+// DHT dht(DHTPIN, DHTTYPE);
 
 
 // ethernet interface mac address, must be unique on the LAN
@@ -26,8 +27,8 @@ BufferFiller bfill;
 // Timer is used to reduce the frequency of reading the DHT11 - I found reading it every loop
 // caused timing issues with the Ethernet.
 
-int temp = 0;
-int humid = 0;
+float temp = 0;
+float humid = 0;
 int Timer = 0;
 
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -38,7 +39,7 @@ void setup () {
   if (ether.begin(sizeof Ethernet::buffer, mymac, SS) == 0)
     Serial.println(F("Failed to access Ethernet controller"));
   ether.staticSetup(myip);
-  dht.begin();
+  dht.setup(4); // data pin 2
 }
 
 
@@ -46,7 +47,7 @@ void setup () {
 
 //  Here we get values from the DHT11
 
-static void ReadDHT11()
+static void ReadDHT22()
 {
   temp = dht.readTemperature(); // sometimes, it uses dht.getTemperature
   humid = dht.readHumidity();
@@ -102,7 +103,8 @@ void loop () {
   
   if(Timer == 1)
   {
-    ReadDHT11();
+    delay(dht.getMinimumSamplingPeriod());
+    ReadDHT22();
    }
   
   // What about the other values? How these conditions work?
@@ -118,7 +120,7 @@ void loop () {
 
   if (pos)  // check if valid tcp data is received
   {
-    ReadDHT11();
+    ReadDHT22();
     ether.httpServerReply(homePage()); // send web page data
   }
 }
