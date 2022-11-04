@@ -32,7 +32,7 @@ TO DO (30th August 2022)
 - [x] Full instruction <br />
       Video: https://randomnerdtutorials.com/esp32-dht11-dht22-temperature-humidity-web-server-arduino-ide/\\
 - [ ] Display graph
-- [ ] Store the data in a log
+- [ ] Store the data in a log: https://create.arduino.cc/projecthub/electropeak/sd-card-module-with-arduino-how-to-read-write-data-37f390 (YwRobot micro sd module)
 - [ ] Reset data
 - [ ] Alarm
       
