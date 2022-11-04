@@ -1,11 +1,12 @@
+// This is a demo of the RBBB running as webserver with the EtherCard
+// 2010-05-28 <jc@wippler.nl>
+//
+// License: GPLv2
+
 #include <EtherCard.h>
-#include <SPI.h>
-#include <SD.h>
 
 #include "DHT.h"
-
 DHT dht;
-File myFile;
 //DHT dht2; // for more sensor
 
 // ethernet interface mac address, must be unique on the LAN
@@ -112,4 +113,43 @@ void loop () {
     ReadDHT22();
     ether.httpServerReply(homePage()); // send web page data
   }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////
+DateTime now;
+int newHour = 0;
+int oldHour = 0;
+void save_temperature() {
+  myFile = SD.open("temp.txt", FILE_WRITE);
+  now = rtc.now();
+  myFile.print(now.hour());
+  myFile.print(":");
+  myFile.print(now.minute());
+  rtc.convertTemperature(); //convert current temperature into registers
+  myFile.print(",");
+  myFile.println(rtc.getTemperature()); //read registers and save temperature on deg C
+  myFile.close();
+}
+void setup ()
+{
+  Wire.begin();
+  rtc.begin();
+  Serial.begin(9600);
+  Serial.print("Initializing SD card...");
+  if (!SD.begin(10)) {
+  Serial.println("initialization failed!");
+  while (1);
+}   
+Serial.println("initialization done.");
+now = rtc.now();
+oldHour = now.hour();
+}
+void loop ()
+{
+  now = rtc.now();
+  newHour = now.hour();
+  if (oldHour != newHour) {
+  save_temperature();
+  oldHour = newHour;
+}
 }
