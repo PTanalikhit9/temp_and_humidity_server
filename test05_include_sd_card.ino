@@ -4,9 +4,12 @@
 // License: GPLv2
 
 #include <EtherCard.h>
-
 #include "DHT.h"
+#include <SPI.h>
+#include <SD.h>
+
 DHT dht;
+File myFile;
 //DHT dht2; // for more sensor
 
 // ethernet interface mac address, must be unique on the LAN
