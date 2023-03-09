@@ -20,6 +20,12 @@
  * 
  */
 
+
+
+
+
+
+
 ///////////////////////////////////////////
 // import the necessary libraries
 ///////////////////////////////////////////
@@ -30,6 +36,11 @@
 #include <Ethernet.h>
 #include <EthernetUdp.h>
 ///////////////////////////////////////////
+
+
+
+
+
 
 
 ///////////////////////////////////////////
@@ -50,11 +61,23 @@
 #define MEASURE_INTERVAL 5000
 ///////////////////////////////////////////
 
+
+
+
+
+
+
 void sendNTPpacket(const char * address);
 void getCurrentTime();
 const char* formatString(char *buf_tmp, const char *fmt, ...);
 void MeasureHnT();
 void doSomething(int i);
+
+
+
+
+
+
 
 const int AM2302_PIN[]={5,6,7,8,9};     // The program measures data from first SENSOR_NUM sensors connected to this pin numbers.
 char buf[MAX_BUFF];
@@ -72,6 +95,12 @@ byte mac[] = {
   0xDE, 0xAD, 0xBE, 0xEF, 0xFE, 0xED
 };
 IPAddress ip(192, 168, 0, 19);
+
+
+
+
+
+
 
 // Initialize the Ethernet server library
 // with the IP address and port you want to use
@@ -180,6 +209,12 @@ void setup()
 }
 
 
+
+
+
+
+
+
 void loop() 
 {
   if(millis() >= 21600000)  // The program restarts after 6 hours of running.
@@ -217,6 +252,12 @@ void loop()
     //Serial.println("SAVEWORKBOOK");
     measure_timer=0;
   }
+
+
+
+
+
+
 
   // do the Ethernet thing
   EthernetClient client = server.available();
@@ -295,6 +336,12 @@ void loop()
 }
 
 
+
+
+
+
+
+
 // send an NTP request to the time server at the given address
 void sendNTPpacket(const char * address) {
   // set all bytes in the buffer to 0
@@ -317,6 +364,12 @@ void sendNTPpacket(const char * address) {
   Udp.write(packetBuffer, NTP_PACKET_SIZE);
   Udp.endPacket();
 }
+
+
+
+
+
+
 
 void getCurrentTime()
 {
@@ -344,6 +397,12 @@ void getCurrentTime()
     // print Unix time:
   }
 }
+
+
+
+
+
+
 
 /**
  * --------------------------------------------------------------
@@ -425,6 +484,12 @@ const char* formatString(char *buf_tmp, const char *fmt, ...) {
   return buf_tmp;
 }
 
+
+
+
+
+
+
 void MeasureHnT()
 {
   for(int i=0; i<SENSOR_NUM; i++)
@@ -443,6 +508,12 @@ void MeasureHnT()
   
   return;
 }
+
+
+
+
+
+
 
 
 
