@@ -1,0 +1,103 @@
+<?php
+// connect to the database
+$db = new SQLite3('data.db');
+
+// get the temperature and humidity data from the database
+$results = $db->query("SELECT * FROM readings ORDER BY timestamp DESC LIMIT 168");
+
+// initialize arrays to hold the data
+$temperature_data = [];
+$humidity_data = [];
+$timestamps = [];
+
+// iterate over the results and add the data to the arrays
+while ($row = $results->fetchArray()) {
+    $temperature_data[] = $row['temperature'];
+    $humidity_data[] = $row['humidity'];
+    $timestamps[] = $row['timestamp'];
+}
+
+// reverse the arrays so that the oldest data is first
+$temperature_data = array_reverse($temperature_data);
+$humidity_data = array_reverse($humidity_data);
+$timestamps = array_reverse($timestamps);
+
+// get the minimum and maximum timestamps
+$min_timestamp = $timestamps[0];
+$max_timestamp = time();
+
+// create the temperature chart
+$temperature_chart_data = [
+    'labels' => $timestamps,
+    'datasets' => [
+        [
+            'label' => 'Temperature (°C)',
+            'data' => $temperature_data,
+            'backgroundColor' => 'rgba(255, 99, 132, 0.2)',
+            'borderColor' => 'rgba(255, 99, 132, 1)',
+            'borderWidth' => 1
+        ]
+    ]
+];
+$temperature_chart_options = [
+    'scales' => [
+        'yAxes' => [
+            [
+                'ticks' => [
+                    'beginAtZero' => true
+                ]
+            ]
+        ]
+    ]
+];
+$temperature_chart_data_json = json_encode($temperature_chart_data);
+$temperature_chart_options_json = json_encode($temperature_chart_options);
+
+// create the humidity chart
+$humidity_chart_data = [
+    'labels' => $timestamps,
+    'datasets' => [
+        [
+            'label' => 'Humidity (%)',
+            'data' => $humidity_data,
+            'backgroundColor' => 'rgba(54, 162, 235, 0.2)',
+            'borderColor' => 'rgba(54, 162, 235, 1)',
+            'borderWidth' => 1
+        ]
+    ]
+];
+$humidity_chart_options = [
+    'scales' => [
+        'yAxes' => [
+            [
+                'ticks' => [
+                    'beginAtZero' => true
+                ]
+            ]
+        ]
+    ]
+];
+$humidity_chart_data_json = json_encode($humidity_chart_data);
+$humidity_chart_options_json = json_encode($humidity_chart_options);
+
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Temperature and Humidity Monitor</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <h1>Temperature and Humidity Monitor</h1>
+    <div>
+        <h2>Temperature (°C)</h2>
+        <canvas id="temperature-chart"></canvas>
+    </div>
+    <div>
+        <h2>Humidity (%)</h2>
+        <canvas id="humidity-chart"></canvas>
+    </div>
+    <script>
+        var temperatureChart = new Chart(document.getElementById('temperature-chart'), {
+            type: 'line',
+            data
