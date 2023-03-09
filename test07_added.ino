@@ -1,4 +1,3 @@
-
 #include <Adafruit_ILI9341.h>
 
 #define TFT_CS   33
@@ -57,4 +56,34 @@ void plotGraph(int x, int y, float value, int sensorNum, bool isTemperature)
   // clear the previous value
   int prevValuePos = map(prevValue[sensorNum][isTemperature], 0, 100, y1, y0);
   tft.drawCircle(x1, prevValuePos, 2, ILI9341_BLACK);
-  tft.drawLine(x1 - 3, prevValuePos, x1 + 3, prevValue
+  tft.drawLine(x1 - 3, prevValuePos, x1 + 3, prevValuepos, 2, ILI9341_BLACK);
+  tft.drawLine(x1, prevValuePos - 3, x1, prevValuePos + 3, ILI9341_BLACK);
+
+  // save the current value as previous value for next time
+  prevValue[sensorNum][isTemperature] = value * 10;
+  }
+
+  void setup() {
+  tft.begin();
+  tft.setRotation(3);
+  tft.fillScreen(ILI9341_BLACK);
+  }
+
+  void loop() {
+  // read sensor values and plot on the graph
+  float temperature = readTemperature();
+  float humidity = readHumidity();
+  plotGraph(300, 10, temperature, 0, true);
+  plotGraph(300, 120, humidity, 0, false);
+  delay(1000);
+  }
+
+  // function to read temperature
+  float readTemperature() {
+  // your code to read temperature here
+  }
+
+  // function to read humidity
+  float readHumidity() {
+  // your code to read humidity here
+  }
