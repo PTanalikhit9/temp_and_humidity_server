@@ -169,6 +169,8 @@ void setup()
   for(int i=0 ;i<SENSOR_NUM; i++)
     dht[i].setup(AM2302_PIN[i]);
   
+  //add the code to plot graph here
+  
   prev_millis=millis();
 }
 
