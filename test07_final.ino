@@ -526,7 +526,7 @@ void MeasureHnT()
 
 
 
-//...
+//This part will send the digital output (using or gate) when there is a problem.
 void doSomething(int i)
 {
   Serial.println(formatString(buf, "!!! Sensor %d detected high temperature !!!", i+1));
